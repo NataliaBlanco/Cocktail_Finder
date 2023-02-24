@@ -1,0 +1,1 @@
+{"version":3,"sources":["layout/main.scss"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,4BAA4B;EAC5B,aAAa,EAAA","file":"main.css","sourcesContent":[".selected_cards {\n  background-color: aqua;\n  border: solid blueviolet 2px;\n  height: 100px;\n}\n"]}
