@@ -1,10 +1,23 @@
 'use strict';
-//function
-/* const typeCocktailName = inputCocktailName.value;
-console.log(typeCocktailName); */
+//BUSCAR COCKTAILS POR SU NOMBRE
+dataApi(cocktailDefault);
 
-function typeCocktailName(msg) {
-  inputCocktailName.innerHTML = msg;
+function handleClickBtnSrch(ev) {
+  ev.preventDefault();
+  const typeCocktailName = inputCocktailName.value;
+  dataApi(typeCocktailName);
 }
 
-const cocktailName = drinks.find((cocktail) => cocktail.value);
+function dataApi(valueSearch) {
+  fetch(url + valueSearch)
+    .then((response) => response.json())
+    .then(function (data) {
+      console.log(data);
+      listCocktailData = data.drinks;
+      // PaintCocktailMargarita(listCocktailData[2]);
+      PaintAllCocktails(listCocktailData);
+    });
+}
+
+//eventos
+btnSearch.addEventListener('click', handleClickBtnSrch);

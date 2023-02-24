@@ -16,45 +16,58 @@ const btnSearch = document.querySelector('.js-btn-search');
 const btnReset = document.querySelector('.js-btn-reset');
 const cocktailList = document.querySelector('.js-list');
 const cocktailFavList = document.querySelector('.js-favourites-list');
-const url =
-  'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
+
+const cocktailDefault = 'margarita';
+const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
 let listCocktailData = [];
 
 let listfavCocktailData = [];
 
-fetch(url)
-  .then((response) => response.json())
-  .then(function (data) {
-    console.log(data);
-    listCocktailData = data.drinks;
-  });
-
 'use strict';
-//function
-/* const typeCocktailName = inputCocktailName.value;
-console.log(typeCocktailName); */
+//BUSCAR COCKTAILS POR SU NOMBRE
+dataApi(cocktailDefault);
 
-function typeCocktailName(msg) {
-  inputCocktailName.innerHTML = msg;
+function handleClickBtnSrch(ev) {
+  ev.preventDefault();
+  const typeCocktailName = inputCocktailName.value;
+  dataApi(typeCocktailName);
 }
 
-const cocktailName = drinks.find((cocktail) => cocktail.value);
-
-'use strict';
-
-//function
-function handleClickBtnSrch(cocktails) {
-  let html = `<li>
-    <h3></h3>
-    <a>url</a>`;
-
-  html += `</li>`;
-
-  return (cocktailList.innerHTML = html);
+function dataApi(valueSearch) {
+  fetch(url + valueSearch)
+    .then((response) => response.json())
+    .then(function (data) {
+      console.log(data);
+      listCocktailData = data.drinks;
+      // PaintCocktailMargarita(listCocktailData[2]);
+      PaintAllCocktails(listCocktailData);
+    });
 }
 
 //eventos
 btnSearch.addEventListener('click', handleClickBtnSrch);
+
+'use strict';
+
+//function
+//Pintar UN COCKTAIL DE LA LISTA DE MARGARITAS
+function PaintCocktail(cocktail) {
+  let html = `<li>
+    <h3>${cocktail.strDrink}</h3>
+    <img src=${cocktail.strDrinkThumb} alt=${cocktail.strDrink} width=150 height=150>`;
+
+  html += `</li>`;
+
+  cocktailList.innerHTML += html;
+}
+
+//PINTAR TODOS LOS COCKTELES DE LA LISTA DE MARGARITAS
+function PaintAllCocktails(listCocktailData) {
+  cocktailList.innerHTML = '';
+  for (const cocktail of listCocktailData) {
+    PaintCocktail(cocktail);
+  }
+}
 
 //# sourceMappingURL=main.js.map

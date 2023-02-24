@@ -1,15 +1,21 @@
 'use strict';
 
 //function
-function handleClickBtnSrch(cocktails) {
+//Pintar UN COCKTAIL DE LA LISTA DE MARGARITAS
+function PaintCocktail(cocktail) {
   let html = `<li>
-    <h3></h3>
-    <a>url</a>`;
+    <h3>${cocktail.strDrink}</h3>
+    <img src=${cocktail.strDrinkThumb} alt=${cocktail.strDrink} width=150 height=150>`;
 
   html += `</li>`;
 
-  return (cocktailList.innerHTML = html);
+  cocktailList.innerHTML += html;
 }
 
-//eventos
-btnSearch.addEventListener('click', handleClickBtnSrch);
+//PINTAR TODOS LOS COCKTELES DE LA LISTA DE MARGARITAS
+function PaintAllCocktails(listCocktailData) {
+  cocktailList.innerHTML = '';
+  for (const cocktail of listCocktailData) {
+    PaintCocktail(cocktail);
+  }
+}
