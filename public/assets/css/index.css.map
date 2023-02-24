@@ -1,1 +1,1 @@
-{"version":3,"sources":["layout/_main.scss"],"names":[],"mappings":"AAAA;EACE,sBAAsB,EAAA","file":"index.css","sourcesContent":[".selected_cards {\n  background-color: pink;\n}\n"]}
+{"version":3,"sources":["layout/_main.scss"],"names":[],"mappings":"AAAA;EACE,sBAAsB,EAAA;;AAExB;EACE,qBAAqB,EAAA","file":"index.css","sourcesContent":[".selected_cards {\n  background-color: pink;\n}\n.pic {\n  border: solid red 2px;\n}\n"]}

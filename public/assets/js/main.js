@@ -52,12 +52,11 @@ btnSearch.addEventListener('click', handleClickBtnSrch);
 //function
 //Pintar UN COCKTAIL DE LA LISTA DE MARGARITAS
 function PaintCocktail(cocktail) {
-  let html = `<li class="js-li-card selected_cards" id=${cocktail.idDrink}>
+  let html = `<li class="js-li-card" id=${cocktail.idDrink}>
     <h3>${cocktail.strDrink}</h3>
-    <img src=${cocktail.strDrinkThumb} alt=${cocktail.strDrink} width=150 height=150>`;
+    <img src=${cocktail.strDrinkThumb} alt=${cocktail.strDrink} width=150 height=150 class="">`;
 
   html += `</li>`;
-
   cocktailList.innerHTML += html;
 }
 
@@ -72,13 +71,13 @@ function PaintAllCocktails(listCocktailData) {
 
 //FUNCION PARA CLICAR EN LAS CARDS DE LA LISTA
 function ClickFav(ev) {
-  console.log(ev.currentTarget.id);
+  ev.currentTarget.classList.toggle('selected_cards');
+  const selectedCards = listCocktailData.find(
+    (cocktail) => cocktail.idDrink === ev.currentTarget.id
+  );
+  
 
-  ev.currentTarget.classlist.add('selected_cards');
-}
-
-//PARA SELECCIONAR TODAS LAS TARJETAS DE LA LISTA
-
+//PARA SELECCIONAR TODAS LAS TARJETAS DE LA LISTA y ESCUCHAR EL EVENTO
 function addEventToCard() {
   const allElementsList = document.querySelectorAll('.js-li-card');
   for (const card of allElementsList) {
@@ -86,6 +85,17 @@ function addEventToCard() {
   }
 }
 
+// CREAR LISTA DE FAVORITOS
+/* 
+function PaintFavCocktail(cocktail) {
+  let html = `<li class="js-li-card" id=${cocktail.idDrink}>
+    <h3>${cocktail.strDrink}</h3>
+    <img src=${cocktail.strDrinkThumb} alt=${cocktail.strDrink} width=150 height=150 class="">`;
+
+  html += `</li>`;
+  cocktailFavList.innerHTML += html;
+}
+ */
 //events
 
 //# sourceMappingURL=main.js.map
