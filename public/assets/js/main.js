@@ -27,7 +27,7 @@ fetch(url)
   .then((response) => response.json())
   .then(function (data) {
     console.log(data);
-    /*  listCocktailData = data.drinks; */
+    listCocktailData = data.drinks;
   });
 
 'use strict';
@@ -45,14 +45,13 @@ const cocktailName = drinks.find((cocktail) => cocktail.value);
 
 //function
 function handleClickBtnSrch(cocktails) {
-  let html = `<ul class="js-list">
-  <li>
-                    <h3>${cocktails.name}
-                        <a href="${cocktails.strDrinkThumb}"></a>
-                    </h3>;`;
-  html += `
-  </ul></li>`;
-  html;
+  let html = `<li>
+    <h3></h3>
+    <a>url</a>`;
+
+  html += `</li>`;
+
+  return (cocktailList.innerHTML = html);
 }
 
 //eventos

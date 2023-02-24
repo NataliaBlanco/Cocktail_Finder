@@ -2,14 +2,13 @@
 
 //function
 function handleClickBtnSrch(cocktails) {
-  let html = `<ul class="js-list">
-  <li>
-                    <h3>${cocktails.name}
-                        <a href="${cocktails.strDrinkThumb}"></a>
-                    </h3>;`;
-  html += `
-  </ul></li>`;
-  html;
+  let html = `<li>
+    <h3></h3>
+    <a>url</a>`;
+
+  html += `</li>`;
+
+  return (cocktailList.innerHTML = html);
 }
 
 //eventos

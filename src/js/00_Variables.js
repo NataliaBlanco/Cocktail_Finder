@@ -27,5 +27,5 @@ fetch(url)
   .then((response) => response.json())
   .then(function (data) {
     console.log(data);
-    /*  listCocktailData = data.drinks; */
+    listCocktailData = data.drinks;
   });
