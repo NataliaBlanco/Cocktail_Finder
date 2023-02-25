@@ -20,7 +20,7 @@ function PaintAllCocktails(listCocktailData) {
   addEventToCard();
 }
 
-//FUNCION PARA CLICAR EN LAS CARDS DE LA LISTA
+//FUNCION PARA CLICAR EN LAS CARDS DE LA LISTA Y SEELCCIONAR SUS IDs
 function ClickFav(ev) {
   ev.currentTarget.classList.toggle('selected_cards');
   const selectedCards = listCocktailData.find(
