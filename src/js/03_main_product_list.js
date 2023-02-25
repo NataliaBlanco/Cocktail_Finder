@@ -8,26 +8,49 @@ function PaintCocktail(cocktail) {
     <img src=${cocktail.strDrinkThumb} alt=${cocktail.strDrink} width=150 height=150 class="">`;
 
   html += `</li>`;
-  cocktailList.innerHTML += html;
+  return html;
 }
 
 //PINTAR TODOS LOS COCKTELES DE LA LISTA DE MARGARITAS
 function PaintAllCocktails(listCocktailData) {
   cocktailList.innerHTML = '';
   for (const cocktail of listCocktailData) {
-    PaintCocktail(cocktail);
+    cocktailList.innerHTML += PaintCocktail(cocktail);
   }
   addEventToCard();
 }
 
 //FUNCION PARA CLICAR EN LAS CARDS DE LA LISTA Y SEELCCIONAR SUS IDs
 function ClickFav(ev) {
+  // A TRAVES DEL CURR.T HACE UN TOGGLE (pincha y despincha) CON LA CLASE CSS SEL.CRDS Y LAS PINTA Y DESPINTA DE ROSA
   ev.currentTarget.classList.toggle('selected_cards');
+  const idCurrTrgt = ev.currentTarget.id;
+  // ENCUENTRA EL ELEMENTO QUE TIENE COMO IDENTIFICADOR IDDRINKS
   const selectedCards = listCocktailData.find(
-    (cocktail) => cocktail.idDrink === ev.currentTarget.id
+    (cocktail) => cocktail.idDrink === idCurrTrgt
   );
+  // ENCUENTRA LA POSICION DE LOS COCKTAILS FAVS, EN LA LISTA DE FAVS PARA PROCEDER A BORRARLA LUEGO CON LA CONDICION
+  const cocktailNum = listfavCocktailData.findIndex(
+    (cocktail) => cocktail.idDrink === idCurrTrgt
+  );
+
+  if (cocktailNum === -1) {
+    //pushea las que no estaban en la lista
+    listfavCocktailData.push(selectedCards);
+    // LAS PINTA EN EL HTML
+    PaintFavCocktails(listfavCocktailData);
+  } else listfavCocktailData.splice(cocktailNum, 1);
 }
 
+//FUNCIÓN QUE PINTA TODOS LOS COCKTAILS SELECCIONADOS EN EL LISTADO DE FAVORITOS
+function PaintFavCocktails(listFavCocktailData) {
+  cocktailFavList.innerHTML = '';
+  for (const cocktail of listFavCocktailData) {
+    cocktailFavList.innerHTML += PaintCocktail(cocktail);
+  }
+}
+
+//events
 //PARA SELECCIONAR TODAS LAS TARJETAS DE LA LISTA y ESCUCHAR EL EVENTO
 function addEventToCard() {
   const allElementsList = document.querySelectorAll('.js-li-card');
@@ -35,16 +58,3 @@ function addEventToCard() {
     card.addEventListener('click', ClickFav);
   }
 }
-
-// CREAR LISTA DE FAVORITOS
-/* 
-function PaintFavCocktail(cocktail) {
-  let html = `<li class="js-li-card" id=${cocktail.idDrink}>
-    <h3>${cocktail.strDrink}</h3>
-    <img src=${cocktail.strDrinkThumb} alt=${cocktail.strDrink} width=150 height=150 class="">`;
-
-  html += `</li>`;
-  cocktailFavList.innerHTML += html;
-}
- */
-//events
