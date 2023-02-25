@@ -10,7 +10,7 @@
  *7
  *8-
  */
-
+const AllLists = document.querySelector('.js-allLists');
 const inputCocktailName = document.querySelector('.js-input-cocktail');
 const btnSearch = document.querySelector('.js-btn-search');
 const btnReset = document.querySelector('.js-btn-reset');

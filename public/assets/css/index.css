@@ -1,7 +1,10 @@
 .selected_cards {
-  background-color: pink; }
+  background-color: pink;
+  color: fuchsia; }
 
-.pic {
-  border: solid red 2px; }
+.allLists {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 50%; }
 
 /*# sourceMappingURL=index.css.map */

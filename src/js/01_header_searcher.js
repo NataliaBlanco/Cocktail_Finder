@@ -1,5 +1,7 @@
 'use strict';
 //BUSCAR COCKTAILS POR SU NOMBRE
+
+/* const favCocktailStored = Json.parse(localStorage.getItem('favCocktails')); */
 dataApi(cocktailDefault);
 
 function handleClickBtnSrch(ev) {

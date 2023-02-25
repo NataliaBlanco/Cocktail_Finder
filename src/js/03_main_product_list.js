@@ -20,8 +20,9 @@ function PaintAllCocktails(listCocktailData) {
   addEventToCard();
 }
 
-//FUNCION PARA CLICAR EN LAS CARDS DE LA LISTA Y SEELCCIONAR SUS IDs
+//FUNCION PARA CLICAR EN LAS CARDS DE LA LISTA Y SEELCCIONAR cocktailIndex SUS IDs
 function ClickFav(ev) {
+  AllLists.classList.add('allLists');
   // A TRAVES DEL CURR.T HACE UN TOGGLE (pincha y despincha) CON LA CLASE CSS SEL.CRDS Y LAS PINTA Y DESPINTA DE ROSA
   ev.currentTarget.classList.toggle('selected_cards');
   const idCurrTrgt = ev.currentTarget.id;
@@ -30,16 +31,18 @@ function ClickFav(ev) {
     (cocktail) => cocktail.idDrink === idCurrTrgt
   );
   // ENCUENTRA LA POSICION DE LOS COCKTAILS FAVS, EN LA LISTA DE FAVS PARA PROCEDER A BORRARLA LUEGO CON LA CONDICION
-  const cocktailNum = listfavCocktailData.findIndex(
+  const cocktailIndex = listfavCocktailData.findIndex(
     (cocktail) => cocktail.idDrink === idCurrTrgt
   );
-
-  if (cocktailNum === -1) {
+  if (cocktailIndex === -1) {
     //pushea las que no estaban en la lista
     listfavCocktailData.push(selectedCards);
     // LAS PINTA EN EL HTML
     PaintFavCocktails(listfavCocktailData);
-  } else listfavCocktailData.splice(cocktailNum, 1);
+  } else {
+    listfavCocktailData.splice(cocktailIndex, 1);
+    PaintFavCocktails(listfavCocktailData);
+  }
 }
 
 //FUNCIÓN QUE PINTA TODOS LOS COCKTAILS SELECCIONADOS EN EL LISTADO DE FAVORITOS
@@ -48,6 +51,7 @@ function PaintFavCocktails(listFavCocktailData) {
   for (const cocktail of listFavCocktailData) {
     cocktailFavList.innerHTML += PaintCocktail(cocktail);
   }
+  localStorage.setItem('favCocktails', JSON.stringify(listfavCocktailData));
 }
 
 //events
