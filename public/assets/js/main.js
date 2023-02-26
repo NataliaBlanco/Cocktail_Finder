@@ -45,9 +45,15 @@ function dataApi(valueSearch) {
       PaintAllCocktails(listCocktailData);
     });
 }
+function handleClickBtnReset(ev) {
+  ev.preventDefault();
+  cocktailFavList.innerHTML = '';
+  cocktailList.innerHTML += PaintCocktail(cocktail);
+}
 
 //eventos
 btnSearch.addEventListener('click', handleClickBtnSrch);
+btnReset.addEventListener('click', handleClickBtnReset);
 
 'use strict';
 
@@ -92,9 +98,18 @@ function ClickFav(ev) {
     PaintFavCocktails(listfavCocktailData);
   } else {
     listfavCocktailData.splice(cocktailIndex, 1);
-    PaintFavCocktails(listfavCocktailData);
+  }
+  PaintFavCocktails(listfavCocktailData);
+}
+
+function pullFavList() {
+  const listFavCocktail = JSON.parse(localStorage.getItem('favCocktails'));
+  if (listFavCocktail) {
+    listfavCocktailData = listFavCocktail;
+    PaintFavCocktails(listFavCocktail);
   }
 }
+pullFavList();
 
 //FUNCIÓN QUE PINTA TODOS LOS COCKTAILS SELECCIONADOS EN EL LISTADO DE FAVORITOS
 function PaintFavCocktails(listFavCocktailData) {
