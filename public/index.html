@@ -5,35 +5,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The best Cocktail</title>
-  <!-- Google Fonts
-      <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-    -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;500&family=Maven+Pro&family=Noto+Sans+Mongolian&family=Raleway&family=Zeyada&display=swap"
+    rel="stylesheet">
+
   <!-- Icons
-    
     -->
+
   <link rel="stylesheet" href="./assets/css/index.css" />
   <link rel="CocktailIcon" href="./assets/images/cocktail.png" />
 
 </head>
 
-<body>
+<body class="body">
   <header class="header">
-    <h1>Cocktails</h1>
-    <form>
-      <input type="text" id="" name="" class="js-input-cocktail" value="">
-      <input type="button" id="" name="Buscar" value="Buscar" class="js-btn-search">
-      <input type="button" id="" name="Reset" value="Reset" class="js-btn-reset">
+    <h1 class="header-title">Cocktails</h1>
+    <form class="header-form">
+      <input type="text" id="" name="" class="form-input js-input-cocktail" value="">
+      <input type="button" id="" name="Buscar" value="Buscar" class="form-search js-btn-search">
+      <input type="button" id="" name="Reset" value="Reset" class="form-reset js-btn-reset">
     </form>
   </header>
   <main class="main">
       <ul class=" js-allLists">
-          <section class="section-Fav">
-              <h2>Favoritos</h2>
-              <ul class="js-favourites-list"></ul>
+          <section class="section">
+              <h2 class="section-title">Favoritos</h2>
+              <ul class="js-favourites-list fav-list"></ul>
           </section>
-          <section class="section-List">
-              <h2>Lista</h2>
-              <ul class="js-list">
+          <section class="section">
+              <h2 class="section-title">Lista</h2>
+              <ul class="js-list default-list">
               </ul>
           </section>
 
@@ -41,12 +44,13 @@
 
   </main>
   <footer class="footer">
-      <p>© 2023 TheNataCocktailSite.</p>
+      <p>© 2023 TheNataCocktailSite</p>
       <p><small><a href="https://www.flaticon.com/free-icons/cocktail" title="cocktail icons">Cocktail icons created by
                   Roundicons -
                   Flaticon</a></small></p>
   </footer>
   <script src="./assets/js/main.js"></script>
+  <script src="https://kit.fontawesome.com/e07398425a.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

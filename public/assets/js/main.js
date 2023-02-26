@@ -60,9 +60,9 @@ btnReset.addEventListener('click', handleClickBtnReset);
 //function
 //Pintar UN COCKTAIL DE LA LISTA DE MARGARITAS
 function PaintCocktail(cocktail) {
-  let html = `<li class="js-li-card" id=${cocktail.idDrink}>
-    <h3>${cocktail.strDrink}</h3>
-    <img src=${cocktail.strDrinkThumb} alt=${cocktail.strDrink} width=150 height=150 class="">`;
+  let html = `<li class="js-li-card li-card" id=${cocktail.idDrink}>
+    <h3 class=li-card-title>${cocktail.strDrink}</h3>
+    <img src=${cocktail.strDrinkThumb} alt=${cocktail.strDrink} width=150 height=150 class="li-card-img">`;
 
   html += `</li>`;
   return html;
@@ -115,8 +115,11 @@ pullFavList();
 function PaintFavCocktails(listFavCocktailData) {
   cocktailFavList.innerHTML = '';
   for (const cocktail of listFavCocktailData) {
-    cocktailFavList.innerHTML += PaintCocktail(cocktail);
+    cocktailFavList.innerHTML +=
+      PaintCocktail(cocktail) +
+      `<i class="fal fa-times-circle li-card-icon"></i>`;
   }
+
   localStorage.setItem('favCocktails', JSON.stringify(listfavCocktailData));
 }
 

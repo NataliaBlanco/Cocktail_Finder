@@ -1,2 +1,58 @@
 .header {
+  height: 100%;
+  width: 100%;
+  background-image: url('../images/palms.jpg');
+  -webkit-filter: opacity(0.85);
+  box-shadow: inset 0px 0px 6px 4px grey;
+  background-size: cover;
+  background-position-y: center;
+  padding: 40px 25px;
+
+  &-title {
+    -webkit-text-stroke: 3px white;
+    font-family: $fontAdvent;
+    font-size: 8rem;
+    padding: 10px 0px 15px 0px 0;
+  }
+  &-form {
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    .form-input {
+      height: 3rem;
+      width: 30rem;
+      border-radius: 5px;
+      border: solid palevioletred 2px;
+      color: black;
+      font-family: $fontAdvent;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .form-search {
+      height: 3rem;
+      width: 10rem;
+      border: solid palevioletred 2px;
+      border-radius: 5px;
+      background-color: white;
+      color: palevioletred;
+      font-family: $fontAdvent;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0 0 0 3px;
+    }
+    .form-reset {
+      height: 3rem;
+      width: 10rem;
+      border: solid palevioletred 2px;
+      border-radius: 5px;
+      background-color: white;
+      color: palevioletred;
+      font-family: $fontAdvent;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0 0 0 3px;
+    }
+  }
 }
