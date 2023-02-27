@@ -1,12 +1,12 @@
 # Natalia's Cocktail list
 In order to use this repository you will need to clone into your device. The page itself allows you to search for a list of cocktails and also to save them in a "Favourites list".
-If you would like to see and play with the code, you will have to clone the repository. Once cloned you will need to install on your pc the package running in your terminal the command "npm install". 
 
+If you would like to see and play with the code, you will have to clone the repository. Once cloned you will need to install on your pc the package running in your terminal the command "npm install". 
 Then, in order to see the page you will have to run the command "npm start" and the page will show up.
 
 The objective of this exercise was to practise JS concepts and issues as well as working with Sass & HTML and to be able to build a dynamic page from scratch.
 
-There is a creative to the project as the design of the page is genuine and exclusive.
+There is a creative side to the project as the design of the page is genuine and exclusive.
 
 There is a link to the website on githubpages on the right top handside of the page.
 
