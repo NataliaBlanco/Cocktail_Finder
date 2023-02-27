@@ -38,8 +38,10 @@
       margin: 5px 0;
       border-radius: 3px;
       width: 24rem;
+      height: 24rem;
 
       &-title {
+        justify-content: center;
         font-family: $fontZedaya;
         font-size: 2.5rem;
         padding: 0.5rem 0 0 0;
@@ -49,14 +51,15 @@
         border-radius: 8px;
         border: grey solid 1px;
         margin: 1rem 0 0 0;
+        grid-column-start: 1;
       }
       &-icon {
         font-size: 2.5rem;
         bottom: 10px;
-        transform: translateX(20.5rem) translateY(-20.5rem);
         color: bisque;
         font-weight: bolder;
         -webkit-text-stroke: 1px palevioletred;
+        transform: translateX(10rem) translateY(1rem);
       }
     }
   }
