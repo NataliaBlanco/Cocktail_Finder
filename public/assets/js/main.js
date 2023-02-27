@@ -4,11 +4,12 @@
  *1- Crear Una esctructura Básica de HTML dividida en sus correspondientes ficheros separados
  *2- Crear Constantes con las que se va a trabajar, y los arrays vacíos para los bucles e insertar info en ellos.
  *3-Crear esctructura de HTML que quiero que se me pinte en JS y meterla en una función comentada pra despueś trabajar con ella.
- *4- Crear un fetch para ver los datos con los que voy a trabajar en este caso direeccion de Api
- *5-Crear una función que cuando se haga click en la función de buscar se añadan los cóckteles de la búsqueda del listado previamente dado, en la cual meter vamos a meter el FETCH, porque queremos que nos traiga la info una vez se pinche el botón de click. Comprobar que están bien y que los traen bien de la API
- *6-
- *7
- *8-
+ *4- Crear un fetch para ver los datos con los que voy a trabajar en este caso direccion de Api
+ *5-Crear una función que cuando se haga click en la función de buscar se añadan los cóckteles de la búsqueda del listado previamente dado, en la cual meter vamos a meter el FETCH, porque queremos que nos traiga la info una vez se pinche el botón de click. Comprobar que están bien y que los traen bien de la API.
+ *6-Crear la lista de favrios con los diferentes métodos y añadirle un formato en la lista normal para que queden marcados
+ *7-Guardar en el LS, y que al refrescar sigan pintados
+ *8-Traer de LS, se refresca y se pinta
+ *9-
  */
 const AllLists = document.querySelector('.js-allLists');
 const inputCocktailName = document.querySelector('.js-input-cocktail');
@@ -18,6 +19,7 @@ const cocktailList = document.querySelector('.js-list');
 const cocktailFavList = document.querySelector('.js-favourites-list');
 const cocktailDefault = 'margarita';
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+const btnX = document.querySelector('.js-li-card-icon');
 
 let listCocktailData = [];
 
@@ -44,11 +46,6 @@ function dataApi(valueSearch) {
       // PaintCocktailMargarita(listCocktailData[2]);
       PaintAllCocktails(listCocktailData);
     });
-}
-function handleClickBtnReset(ev) {
-  ev.preventDefault();
-  cocktailFavList.innerHTML = '';
-  cocktailList.innerHTML += PaintCocktail(cocktail);
 }
 
 //eventos
@@ -79,7 +76,6 @@ function PaintAllCocktails(listCocktailData) {
 
 //FUNCION PARA CLICAR EN LAS CARDS DE LA LISTA Y SEELCCIONAR cocktailIndex SUS IDs
 function ClickFav(ev) {
-  AllLists.classList.add('allLists');
   // A TRAVES DEL CURR.T HACE UN TOGGLE (pincha y despincha) CON LA CLASE CSS SEL.CRDS Y LAS PINTA Y DESPINTA DE ROSA
   ev.currentTarget.classList.toggle('selected_cards');
   const idCurrTrgt = ev.currentTarget.id;
@@ -91,17 +87,20 @@ function ClickFav(ev) {
   const cocktailIndex = listfavCocktailData.findIndex(
     (cocktail) => cocktail.idDrink === idCurrTrgt
   );
+  //CONCIDIONAL DE..
   if (cocktailIndex === -1) {
-    //pushea las que no estaban en la lista
+    //PUSHEA LAS QUE NO ESTABAN EN LA LISTA
     listfavCocktailData.push(selectedCards);
     // LAS PINTA EN EL HTML
     PaintFavCocktails(listfavCocktailData);
   } else {
+    //LAS QUITA DE LA LISTA
     listfavCocktailData.splice(cocktailIndex, 1);
   }
+  // Y LAS VUELVE A PINTAR
   PaintFavCocktails(listfavCocktailData);
 }
-
+//LAS COGE DEL LOCAL STORE
 function pullFavList() {
   const listFavCocktail = JSON.parse(localStorage.getItem('favCocktails'));
   if (listFavCocktail) {
@@ -109,19 +108,29 @@ function pullFavList() {
     PaintFavCocktails(listFavCocktail);
   }
 }
+//LLAMAMOS A LA FUNCIÓN
 pullFavList();
 
 //FUNCIÓN QUE PINTA TODOS LOS COCKTAILS SELECCIONADOS EN EL LISTADO DE FAVORITOS
 function PaintFavCocktails(listFavCocktailData) {
   cocktailFavList.innerHTML = '';
+  AllLists.classList.add('allLists');
   for (const cocktail of listFavCocktailData) {
     cocktailFavList.innerHTML +=
       PaintCocktail(cocktail) +
-      `<i class="fal fa-times-circle li-card-icon"></i>`;
+      `<i class="far fa-times-circle li-card-icon js-li-card-icon"></i>`;
   }
 
   localStorage.setItem('favCocktails', JSON.stringify(listfavCocktailData));
 }
+
+function handleClickBtnReset(ev) {
+  ev.preventDefault();
+  cocktailFavList.innerHTML = '';
+  cocktailList.innerHTML += PaintCocktail(cocktail);
+}
+
+//FUNCIÓN PARA QUITAR DEL LISTADO DE FAVORITOS
 
 //events
 //PARA SELECCIONAR TODAS LAS TARJETAS DE LA LISTA y ESCUCHAR EL EVENTO

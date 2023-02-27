@@ -22,7 +22,6 @@ function PaintAllCocktails(listCocktailData) {
 
 //FUNCION PARA CLICAR EN LAS CARDS DE LA LISTA Y SEELCCIONAR cocktailIndex SUS IDs
 function ClickFav(ev) {
-  AllLists.classList.add('allLists');
   // A TRAVES DEL CURR.T HACE UN TOGGLE (pincha y despincha) CON LA CLASE CSS SEL.CRDS Y LAS PINTA Y DESPINTA DE ROSA
   ev.currentTarget.classList.toggle('selected_cards');
   const idCurrTrgt = ev.currentTarget.id;
@@ -34,17 +33,20 @@ function ClickFav(ev) {
   const cocktailIndex = listfavCocktailData.findIndex(
     (cocktail) => cocktail.idDrink === idCurrTrgt
   );
+  //CONCIDIONAL DE..
   if (cocktailIndex === -1) {
-    //pushea las que no estaban en la lista
+    //PUSHEA LAS QUE NO ESTABAN EN LA LISTA
     listfavCocktailData.push(selectedCards);
     // LAS PINTA EN EL HTML
     PaintFavCocktails(listfavCocktailData);
   } else {
+    //LAS QUITA DE LA LISTA
     listfavCocktailData.splice(cocktailIndex, 1);
   }
+  // Y LAS VUELVE A PINTAR
   PaintFavCocktails(listfavCocktailData);
 }
-
+//LAS COGE DEL LOCAL STORE
 function pullFavList() {
   const listFavCocktail = JSON.parse(localStorage.getItem('favCocktails'));
   if (listFavCocktail) {
@@ -52,19 +54,29 @@ function pullFavList() {
     PaintFavCocktails(listFavCocktail);
   }
 }
+//LLAMAMOS A LA FUNCIÓN
 pullFavList();
 
 //FUNCIÓN QUE PINTA TODOS LOS COCKTAILS SELECCIONADOS EN EL LISTADO DE FAVORITOS
 function PaintFavCocktails(listFavCocktailData) {
   cocktailFavList.innerHTML = '';
+  AllLists.classList.add('allLists');
   for (const cocktail of listFavCocktailData) {
     cocktailFavList.innerHTML +=
       PaintCocktail(cocktail) +
-      `<i class="fal fa-times-circle li-card-icon"></i>`;
+      `<i class="far fa-times-circle li-card-icon js-li-card-icon"></i>`;
   }
 
   localStorage.setItem('favCocktails', JSON.stringify(listfavCocktailData));
 }
+
+function handleClickBtnReset(ev) {
+  ev.preventDefault();
+  cocktailFavList.innerHTML = '';
+  cocktailList.innerHTML += PaintCocktail(cocktail);
+}
+
+//FUNCIÓN PARA QUITAR DEL LISTADO DE FAVORITOS
 
 //events
 //PARA SELECCIONAR TODAS LAS TARJETAS DE LA LISTA y ESCUCHAR EL EVENTO

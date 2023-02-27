@@ -113,7 +113,11 @@
         border: grey solid 1px;
         margin: 1rem 0 0 0; }
       .body .section .li-card-icon {
-        font-size: 1rem;
-        bottom: 10px; }
+        font-size: 2.5rem;
+        bottom: 10px;
+        transform: translateX(20.5rem) translateY(-20.5rem);
+        color: bisque;
+        font-weight: bolder;
+        -webkit-text-stroke: 1px palevioletred; }
 
 /*# sourceMappingURL=index.css.map */

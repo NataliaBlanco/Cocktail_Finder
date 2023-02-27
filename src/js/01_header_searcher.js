@@ -20,11 +20,6 @@ function dataApi(valueSearch) {
       PaintAllCocktails(listCocktailData);
     });
 }
-function handleClickBtnReset(ev) {
-  ev.preventDefault();
-  cocktailFavList.innerHTML = '';
-  cocktailList.innerHTML += PaintCocktail(cocktail);
-}
 
 //eventos
 btnSearch.addEventListener('click', handleClickBtnSrch);
