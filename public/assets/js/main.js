@@ -142,7 +142,9 @@ function PaintFavCocktails(listFavCocktailData) {
 function handleClickBtnReset(ev) {
   ev.preventDefault();
   cocktailFavList.innerHTML = '';
-  cocktailList.innerHTML = '';
+  for (const cocktail of listCocktailData) {
+    cocktailList.innerHTML += PaintCocktail(cocktail, false);
+  }
 
   /* ev.currentTarget. classList.remove('selected_cards'); */
 }
