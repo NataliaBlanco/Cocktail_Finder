@@ -4,15 +4,29 @@
 //Pintar UN COCKTAIL DE LA LISTA DE MARGARITAS
 function PaintCocktail(cocktail, isfav) {
   let pX = '';
+  let Pgrph = '';
+  const word = 'Cocktail';
+  const findAlcoholic = listCocktailData.find((cocktail) =>
+    cocktail.strCategory.includes(word)
+  );
+  console.log(findAlcoholic);
+
+  if (findAlcoholic) {
+    Pgrph = `<p class="js-paragraph">${cocktail.strCategory}</p>`;
+  } else {
+    Pgrph = '';
+  }
+
   if (isfav === true) {
     pX = `<i class="far fa-times-circle li-card-icon js-li-card-icon" id=${cocktail.idDrink}></i>`;
   }
 
   let html = `<li class="js-li-card li-card" id=${cocktail.idDrink}>
     <h3 class=li-card-title>${cocktail.strDrink}</h3>
-    <img src=${cocktail.strDrinkThumb} alt=${cocktail.strDrink} width=150 height=150 class="li-card-img">`;
+    <img src=${cocktail.strDrinkThumb} alt=${cocktail.strDrink} width=150 height=150 class="li-card-img">
+  `;
 
-  html += `${pX}</li>`;
+  html += `${pX}${Pgrph}</li>`;
   return html;
 }
 
