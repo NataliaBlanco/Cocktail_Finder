@@ -4,15 +4,7 @@
 //Pintar UN COCKTAIL DE LA LISTA DE MARGARITAS
 function PaintCocktail(cocktail, isfav) {
   let pX = '';
-  let Pgraph = '';
-  if (cocktail.strAlcoholic === 'Alcoholic') {
-    Pgraph = `<p>Tiene alcohol</p>`;
-  } else {
-    Pgraph = `<p>Sin Alcohol</p>`;
-  }
   if (isfav === true) {
-    /* let Pgraph = `<p></p>`;
-     */
     pX = `<i class="far fa-times-circle li-card-icon js-li-card-icon" id=${cocktail.idDrink}></i>`;
   }
 
@@ -20,7 +12,7 @@ function PaintCocktail(cocktail, isfav) {
     <h3 class=li-card-title>${cocktail.strDrink}</h3>
     <img src=${cocktail.strDrinkThumb} alt=${cocktail.strDrink} width=150 height=150 class="li-card-img">`;
 
-  html += `${pX}${Pgraph}</li>`;
+  html += `${pX}</li>`;
   return html;
 }
 
