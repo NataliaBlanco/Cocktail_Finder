@@ -6,7 +6,6 @@ function PaintCocktail(cocktail) {
   const cocktailIsFav = listfavCocktailData.findIndex(
     (eachCocktailFav) => cocktail.idDrink === eachCocktailFav.id
   );
-  console.log(cocktailIsFav);
   let html = `<li class="js-li-card li-card" id=${cocktail.idDrink}>
     <h3 class=li-card-title>${cocktail.strDrink}</h3>
     <img src=${cocktail.strDrinkThumb} alt=${cocktail.strDrink} width=150 height=150 class="li-card-img">`;
@@ -20,7 +19,6 @@ function PaintAllCocktails(listCocktData) {
   for (const cocktail of listCocktData) {
     cocktailList.innerHTML += PaintCocktail(cocktail);
   }
-
   addEventToCard();
 }
 
@@ -34,11 +32,12 @@ function PaintFavCocktail(cocktail) {
 }
 //FUNCIÓN QUE PINTA TODOS LOS COCKTAILS SELECCIONADOS EN EL LISTADO DE FAVORITOS
 function PaintFavCocktails(listFavCocktailData) {
-  cocktailFavList.innerHTML = '';
-  for (const cocktail of listFavCocktailData) {
+  title.innerHTML= "Favoritos";
+   cocktailFavList.innerHTML = '';
+for (const cocktail of listFavCocktailData) {
     cocktailFavList.innerHTML += PaintFavCocktail(cocktail);
-  }
-  DelFav();
+  };
+  DelFav();    
 }
 
 //FUNCION PARA CLICAR EN LAS CARDS DE LA LISTA Y SEELCCIONAR cocktailIndex SUS IDs
@@ -77,8 +76,10 @@ function handleClickBtnReset(ev) {
   ev.preventDefault();
   cocktailFavList.innerHTML = '';
   localStorage.removeItem('favCocktails');
-  listfavCocktailData = [];
+  listfavCocktailData = []; 
   cocktailList.innerHTML = '';
+  title.innerHTML = '';
+  PaintAllCocktails(listCocktailData); 
 }
 
 //FUNCIÓN PARA QUITAR DEL LISTADO DE FAVORITOS

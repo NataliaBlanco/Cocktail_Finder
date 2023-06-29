@@ -19,6 +19,7 @@ const cocktailList = document.querySelector('.js-list');
 const cocktailFavList = document.querySelector('.js-favourites-list');
 const cocktailDefault = 'margarita';
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+const title = document.getElementById("fav");
 let listCocktailData = [];
 
 let listfavCocktailData = [];
